@@ -70,11 +70,8 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   getMarkers() async {
-GeoFirePoint point = geo.point(latitude: pos['latitude'], longitude: pos['longitude']);
-  return firestore.collection('locations').add({ 
-    'position': point.data,
-    'name': 'Yay I can be queried!' 
-  });  }
+
+  }
 
   @override
   Widget build(BuildContext context) {
