@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:geoflutterfire/geoflutterfire.dart';
+// import 'package:geoflutterfire/geoflutterfire.dart';
 
 class User {
   final int id;
@@ -10,7 +10,10 @@ class User {
   final int routeId;
   final bool isActive;
   final int mobile;
-  final GeoFirePoint location;
+  // final GeoFirePoint location;
+  final double latitude;
+  final double longitude;
+
 
   final DocumentReference reference;
 
@@ -23,7 +26,8 @@ class User {
         assert(map['routeId'] != null),
         assert(map['isActive'] != null),
         assert(map['mobile'] != null),
-        assert(map['location'] != null),
+        assert(map['latitude'] != null),
+        assert(map['longitude'] != null),
         id = map['id'],
         name = map['name'],
         votes = map['votes'],
@@ -32,7 +36,8 @@ class User {
         isActive = map['isActive'],
         mobile = map['mobile'],
         routeId = map['routeId'],
-        location = map['location'];
+        latitude = map['latitude'] as double,
+        longitude = map['longitude'] as double;
 
   User.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, reference: snapshot.reference);

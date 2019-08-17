@@ -30,7 +30,7 @@ dev_dependencies:
   google_maps_flutter: ^0.5.20+3  #Google maps API  
   geolocator: ^5.1.1    # GPS location
   cloud_firestore: ^0.12.9  #Firebase cloud storage
-  geoflutterfire: ^2.0.3+5  ##geopoint
+  #geoflutterfire: ^2.0.3+5  ##geopoint
 
   #firebase_auth: ^0.14.0+2
 

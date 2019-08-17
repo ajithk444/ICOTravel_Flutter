@@ -34,19 +34,20 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   getUserLocation() async {
-    Position position = await GPSGeoLocator.getOneTimeLocation();
-    if (position != null) {
+    //Position position = await GPSGeoLocator.getOneTimeLocation();  //get user current location
+    if (widget.user != null) {
       print('got the location');
-      print('firestore location :' + widget.user.location.latitude.toString());
+      // print('firestore location :' + widget.user.location.latitude.toString());
       setState(() {
+        this._center = LatLng(widget.user.latitude, widget.user.longitude);
+
         //this._center = LatLng(position.latitude, position.longitude);
-        this._center = LatLng(
-            widget.user.location.latitude, widget.user.location.longitude);
+
+        // this._center = LatLng(
+        //     widget.user.location.latitude, widget.user.location.longitude);
         this._loading = false;
       });
       setMarker();
-      print(position.latitude);
-      print(position.longitude);
     }
   }
 
@@ -69,9 +70,7 @@ class _MapScreenState extends State<MapScreen> {
     _markers.add(marker);
   }
 
-  getMarkers() async {
-
-  }
+  getMarkers() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +108,7 @@ class _MapScreenState extends State<MapScreen> {
               tiltGesturesEnabled: true,
               rotateGesturesEnabled: true,
               myLocationEnabled: true,
-              mapType: MapType.terrain,
+              mapType: MapType.normal,
               zoomGesturesEnabled: true,
               markers: _markers,
             ),
