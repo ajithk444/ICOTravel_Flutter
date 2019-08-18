@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fire_login/models/user.dart';
+import 'package:flutter_fire_login/ui/liveMapScreen.dart';
 import 'package:flutter_fire_login/ui/mapScreen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -32,10 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(widget.title),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.info),
+            icon: Icon(Icons.map),
             onPressed: () => {
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (_) => MapScreen()))
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => LiveMapScreen()))
             },
           )
         ],
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Card(
           child: ListTile(
             leading:
-                Icon(Icons.account_box, size: 45.0), //FlutterLogo(size: 56.0),
+                FlutterLogo(size: 56.0),
             title: Text(record.name),
             subtitle:
                 Text(record.address), // + '\n' + record.mobile.toString()),

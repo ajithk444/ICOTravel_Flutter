@@ -97,8 +97,8 @@ class _MapScreenState extends State<MapScreen> {
       body: _loading == true
           ? Container(
               child: Center(
-                child: Text('Loading...'),
-              ),
+                  child: CircularProgressIndicator() //Text('Loading...'),
+                  ),
             )
           : GoogleMap(
               onMapCreated: _onMapCreated,

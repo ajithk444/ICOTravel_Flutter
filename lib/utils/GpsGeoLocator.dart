@@ -12,7 +12,7 @@ class GPSGeoLocator {
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
         .then((_position) {
           return _position;
-        })
+        })  
         .timeout(Duration(seconds: _gpsCaptureTimeOut))
         .catchError((error) {
           return null;
