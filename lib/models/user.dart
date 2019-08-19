@@ -10,10 +10,9 @@ class User {
   final int routeId;
   final bool isActive;
   final int mobile;
-  // final GeoFirePoint location;
   final double latitude;
   final double longitude;
-
+  final String startTime;
 
   final DocumentReference reference;
 
@@ -28,6 +27,7 @@ class User {
         assert(map['mobile'] != null),
         assert(map['latitude'] != null),
         assert(map['longitude'] != null),
+        assert(map['startTime'] != null),
         id = map['id'],
         name = map['name'],
         votes = map['votes'],
@@ -37,7 +37,8 @@ class User {
         mobile = map['mobile'],
         routeId = map['routeId'],
         latitude = map['latitude'] as double,
-        longitude = map['longitude'] as double;
+        longitude = map['longitude'] as double,
+        startTime = map['startTime'];
 
   User.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, reference: snapshot.reference);

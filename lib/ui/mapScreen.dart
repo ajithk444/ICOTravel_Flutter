@@ -33,6 +33,46 @@ class _MapScreenState extends State<MapScreen> {
     mapController = controller;
   }
 
+  showModalSheet() {
+    showModalBottomSheet(
+        context: context,
+        builder: (builder) {
+          return Container(
+            child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+              ListTile(
+                leading: new Icon(Icons.account_circle),
+                title: new Text(widget.user.name),
+                onTap: () => {},
+              ),
+              ListTile(
+                leading: new Icon(Icons.location_city),
+                title: new Text(widget.user.address),
+                onTap: () => {},
+              ),
+              ListTile(
+                leading: new Icon(Icons.access_time),
+                title: new Text(widget.user.startTime),
+                onTap: () => {},
+              ),
+              ListTile(
+                leading: new Icon(Icons.phone),
+                title: new Text(widget.user.mobile.toString()),
+                onTap: () => {},
+              ),
+              ListTile(
+                leading: new Icon(Icons.email),
+                title: new Text(widget.user.email),
+                onTap: () => {},
+              ),
+
+            ]),
+
+            // child: Text(widget.user.mobile.toString()),
+            // padding: EdgeInsets.all(40.0),
+          );
+        });
+  }
+
   getUserLocation() async {
     //Position position = await GPSGeoLocator.getOneTimeLocation();  //get user current location
     if (widget.user != null) {
@@ -59,7 +99,9 @@ class _MapScreenState extends State<MapScreen> {
       ),
       infoWindow:
           InfoWindow(title: widget.user.name, snippet: widget.user.address),
-      onTap: () {},
+      onTap: () {
+        showModalSheet();
+      },
       icon: BitmapDescriptor.defaultMarker,
     );
     _markers.add(marker);
