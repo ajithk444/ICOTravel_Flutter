@@ -74,8 +74,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: Card(
           child: ListTile(
-            leading:
-                FlutterLogo(size: 56.0),
+            leading: CircleAvatar(
+              radius: 30.0,
+              backgroundImage: NetworkImage(record.avatar),
+              backgroundColor: Colors.transparent,
+            ),
+
+            // child: Image.network(record.avatar, fit: BoxFit.scaleDown)),
+            //FlutterLogo(size: 56.0),
             title: Text(record.name),
             subtitle:
                 Text(record.address), // + '\n' + record.mobile.toString()),

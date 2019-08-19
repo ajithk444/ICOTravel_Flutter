@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_fire_login/utils/GpsGeoLocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -19,7 +18,8 @@ class _LiveMapScreenState extends State<LiveMapScreen> {
   final Firestore _database = Firestore.instance;
 
   GoogleMapController _mapController;
-  LatLng _center; // = LatLng(45.521563, -122.677433);
+  LatLng _center, _vehicleLocation; // = LatLng(45.521563, -122.677433);
+
   Set<Marker> _markers = Set<Marker>();
   bool _loading = false;
 
@@ -30,6 +30,7 @@ class _LiveMapScreenState extends State<LiveMapScreen> {
     super.initState();
     _loading = true;
     getUsers();
+    getVehicleLocation();
     getUserLocation();
   }
 
@@ -45,26 +46,38 @@ class _LiveMapScreenState extends State<LiveMapScreen> {
         .then((docs) {
       if (docs.documents.isNotEmpty) {
         for (int i = 0; i < docs.documents.length; i++) {
-          getUserMarkers(docs.documents[i].data, docs.documents[i].documentID);
+          getUserMarkers(
+              docs.documents[i].data, docs.documents[i].documentID, false);
         }
       }
     });
   }
 
-  getUserMarkers(data, id) {
-    //User _user = data;
-    var markerId = id;
+  getUserMarkers(data, id, isVehicle) {
+    //since user and driver tables could have same id,
+    // append id with a char to show unique id
+    var markerId = isVehicle ? 'D' + id : id;
+
     final MarkerId _markerId = MarkerId(markerId);
 
     // create a new Marker
     final Marker marker = Marker(
-      markerId: _markerId,
-      position: LatLng(data['latitude'], data['longitude']),
-      infoWindow: InfoWindow(title: data['name'], snippet: data['address']),
-      icon: BitmapDescriptor.defaultMarkerWithHue(
-        BitmapDescriptor.hueRose,
-      ),
-    );
+        markerId: _markerId,
+        position: LatLng(data['latitude'], data['longitude']),
+        infoWindow: InfoWindow(title: data['name'], snippet: data['address']),
+        icon: isVehicle
+            ? BitmapDescriptor.defaultMarkerWithHue(
+                BitmapDescriptor.hueRose,
+              )
+            : BitmapDescriptor.defaultMarkerWithHue(
+                BitmapDescriptor.hueBlue,
+              ),
+        onTap: () {
+          _mapController.animateCamera(
+            CameraUpdate.newLatLngZoom(
+                LatLng(data['latitude'], data['longitude']), 12.0),
+          );
+        });
 
     setState(() {
       // adding a new marker to map
@@ -103,14 +116,26 @@ class _LiveMapScreenState extends State<LiveMapScreen> {
     // _markers.add(marker);
   }
 
+  getVehicleLocation() {
+    _database.collection('drivers').getDocuments().then((docs) {
+      if (docs.documents.isNotEmpty) {
+        getUserMarkers(docs.documents[0].data, docs.documents[0].documentID,
+            true); //set Marker for vehicle
+        setState(() {
+          this._vehicleLocation = LatLng(docs.documents[0].data['latitude'],
+              docs.documents[0].data['longitude']);
+        });
+        print(this._vehicleLocation);
+      }
+    });
+  }
+
   navigateToVehicleLocation() async {
     //get driver LatLong from firestore and update it here
     //to track the vehicle exact position
+
     _mapController.animateCamera(
-      // CameraUpdate.newCameraPosition(
-      //   CameraPosition(target: LatLng(12.815761, 80.035776), zoom: 11.0),
-      // ),
-      CameraUpdate.newLatLngZoom(LatLng(12.815761, 80.035776), 11.0),
+      CameraUpdate.newLatLngZoom(this._vehicleLocation, 11.0),
     );
   }
 
@@ -137,6 +162,7 @@ class _LiveMapScreenState extends State<LiveMapScreen> {
               tiltGesturesEnabled: true,
               rotateGesturesEnabled: true,
               myLocationEnabled: true,
+              myLocationButtonEnabled: false,
               mapType: MapType.normal,
               zoomGesturesEnabled: true,
               markers: _markers //Set<Marker>.of(markers.values)

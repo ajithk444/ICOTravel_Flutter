@@ -13,6 +13,8 @@ class User {
   final double latitude;
   final double longitude;
   final String startTime;
+  final String avatar;
+  final String designation;
 
   final DocumentReference reference;
 
@@ -28,6 +30,8 @@ class User {
         assert(map['latitude'] != null),
         assert(map['longitude'] != null),
         assert(map['startTime'] != null),
+        assert(map['avatar'] != null),
+        assert(map['designation'] != null),
         id = map['id'],
         name = map['name'],
         votes = map['votes'],
@@ -38,7 +42,9 @@ class User {
         routeId = map['routeId'],
         latitude = map['latitude'] as double,
         longitude = map['longitude'] as double,
-        startTime = map['startTime'];
+        startTime = map['startTime'],
+        avatar = map['avatar'],
+        designation = map['designation'];
 
   User.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, reference: snapshot.reference);

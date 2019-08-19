@@ -40,28 +40,29 @@ class _MapScreenState extends State<MapScreen> {
           return Container(
             child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
               ListTile(
-                leading: new Icon(Icons.account_circle),
-                title: new Text(widget.user.name),
+                leading:  Icon(Icons.verified_user),//account_circle
+                title:  Text(widget.user.name.toString()),
+                //subtitle: Text(widget.user.designation),
                 onTap: () => {},
               ),
               ListTile(
-                leading: new Icon(Icons.location_city),
-                title: new Text(widget.user.address),
+                leading:  Icon(Icons.location_city),
+                title:  Text(widget.user.address),
                 onTap: () => {},
               ),
               ListTile(
-                leading: new Icon(Icons.access_time),
-                title: new Text(widget.user.startTime),
+                leading:  Icon(Icons.access_time),
+                title:  Text(widget.user.startTime),
                 onTap: () => {},
               ),
               ListTile(
-                leading: new Icon(Icons.phone),
-                title: new Text(widget.user.mobile.toString()),
+                leading:  Icon(Icons.phone),
+                title:  Text(widget.user.mobile.toString()),
                 onTap: () => {},
               ),
               ListTile(
-                leading: new Icon(Icons.email),
-                title: new Text(widget.user.email),
+                leading:  Icon(Icons.email),
+                title:  Text(widget.user.email),
                 onTap: () => {},
               ),
 
