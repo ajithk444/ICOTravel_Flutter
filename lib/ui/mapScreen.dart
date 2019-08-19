@@ -37,14 +37,9 @@ class _MapScreenState extends State<MapScreen> {
     //Position position = await GPSGeoLocator.getOneTimeLocation();  //get user current location
     if (widget.user != null) {
       print('got the location');
-      // print('firestore location :' + widget.user.location.latitude.toString());
       setState(() {
         this._center = LatLng(widget.user.latitude, widget.user.longitude);
-
         //this._center = LatLng(position.latitude, position.longitude);
-
-        // this._center = LatLng(
-        //     widget.user.location.latitude, widget.user.location.longitude);
         this._loading = false;
       });
       setMarker();
