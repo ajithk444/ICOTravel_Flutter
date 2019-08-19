@@ -39,33 +39,38 @@ class _MapScreenState extends State<MapScreen> {
         builder: (builder) {
           return Container(
             child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+              Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: new Text(
+                    'User Infomation',
+                    textAlign: TextAlign.left,
+                  )),
               ListTile(
-                leading:  Icon(Icons.verified_user),//account_circle
-                title:  Text(widget.user.name.toString()),
+                leading: Icon(Icons.verified_user), //account_circle
+                title: Text(widget.user.name.toString()),
                 //subtitle: Text(widget.user.designation),
                 onTap: () => {},
               ),
               ListTile(
-                leading:  Icon(Icons.location_city),
-                title:  Text(widget.user.address),
+                leading: Icon(Icons.location_city),
+                title: Text(widget.user.address),
                 onTap: () => {},
               ),
               ListTile(
-                leading:  Icon(Icons.access_time),
-                title:  Text(widget.user.startTime),
+                leading: Icon(Icons.access_time),
+                title: Text(widget.user.startTime),
                 onTap: () => {},
               ),
               ListTile(
-                leading:  Icon(Icons.phone),
-                title:  Text(widget.user.mobile.toString()),
+                leading: Icon(Icons.phone),
+                title: Text(widget.user.mobile.toString()),
                 onTap: () => {},
               ),
               ListTile(
-                leading:  Icon(Icons.email),
-                title:  Text(widget.user.email),
+                leading: Icon(Icons.email),
+                title: Text(widget.user.email),
                 onTap: () => {},
               ),
-
             ]),
 
             // child: Text(widget.user.mobile.toString()),

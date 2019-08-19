@@ -20,9 +20,9 @@ _NOTE: This project will be kept up to date with the latest packages and Flutter
 
 ![](screenshots/home.png)
 
-![](screenshots/user_profile.png)
+![](screenshots/user_profile_1.png)
 
-![](screenshots/users_view.png)
+![](screenshots/users_view_1.png)
 
-![](screenshots/profile_view.png)
+![](screenshots/profile_view_1.png)
 
