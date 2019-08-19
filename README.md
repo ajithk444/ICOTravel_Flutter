@@ -10,9 +10,10 @@ This project shows how to:
 
 - Firebase sign-in method
 - build a live location map
-- track users registered using a common map view
+- Locate users and vehicle in map view
 - firestore image storage and retrive for profile image
 - bottom sheets
+
 
 
 Feel free to use this in your own projects. 😉
