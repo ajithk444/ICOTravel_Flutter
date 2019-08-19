@@ -66,8 +66,11 @@ class _LiveMapScreenState extends State<LiveMapScreen> {
         position: LatLng(data['latitude'], data['longitude']),
         infoWindow: InfoWindow(title: data['name'], snippet: data['address']),
         icon: isVehicle
+            // ? BitmapDescriptor.fromAsset(
+            //     'assets/car_marker.png',
+            //   )
             ? BitmapDescriptor.defaultMarkerWithHue(
-                BitmapDescriptor.hueRose,
+                BitmapDescriptor.hueGreen,
               )
             : BitmapDescriptor.defaultMarkerWithHue(
                 BitmapDescriptor.hueBlue,
@@ -94,26 +97,7 @@ class _LiveMapScreenState extends State<LiveMapScreen> {
         this._center = LatLng(position.latitude, position.longitude);
         this._loading = false;
       });
-      setMarker();
     }
-  }
-
-  setMarker() {
-    // _markers = Set<Marker>();
-    // final MarkerId markerId = MarkerId(widget.user.id.toString());
-    // print(this._center.latitude);
-    // final Marker marker = Marker(
-    //   markerId: markerId,
-    //   position: LatLng(
-    //     this._center.latitude + sin(1 * pi / 6.0) / 20.0,
-    //     this._center.longitude + cos(1 * pi / 6.0) / 20.0,
-    //   ),
-    //   infoWindow:
-    //       InfoWindow(title: widget.user.name, snippet: widget.user.address),
-    //   onTap: () {},
-    //   icon: BitmapDescriptor.defaultMarker,
-    // );
-    // _markers.add(marker);
   }
 
   getVehicleLocation() {
@@ -131,9 +115,6 @@ class _LiveMapScreenState extends State<LiveMapScreen> {
   }
 
   navigateToVehicleLocation() async {
-    //get driver LatLong from firestore and update it here
-    //to track the vehicle exact position
-
     _mapController.animateCamera(
       CameraUpdate.newLatLngZoom(this._vehicleLocation, 11.0),
     );
