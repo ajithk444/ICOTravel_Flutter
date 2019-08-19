@@ -48,7 +48,7 @@ class _MapScreenState extends State<MapScreen> {
               ListTile(
                 leading: Icon(Icons.verified_user), //account_circle
                 title: Text(widget.user.name.toString()),
-                //subtitle: Text(widget.user.designation),
+                subtitle: Text(widget.user.designation),
                 onTap: () => {},
               ),
               ListTile(
