@@ -18,8 +18,8 @@ _NOTE: This project will be kept up to date with the latest packages and Flutter
 
 ## Preview
 
-![](screenshots/location_request.png)
+![](screenshots/Location_request.png)
 
 **Google Sign-in**
 
-![](screenshots/user_profile_MapView.png)
+![](screenshots/User_Profile_MapView.png)
