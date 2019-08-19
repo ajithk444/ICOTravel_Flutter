@@ -1,16 +1,25 @@
 # flutter_fire_login
 
-A new Flutter project.
 
-## Getting Started
+This project shows how to implement a map view live location tracker  in Flutter, using various Firebase as backend data store.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Project goals
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+This project shows how to:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Firebase sign-in method
+- build a live location map
+- track users registered using a common map view
+
+Feel free to use this in your own projects. 😉
+
+_NOTE: This project will be kept up to date with the latest packages and Flutter version._
+
+## Preview
+
+![](screenshots/location_request.png)
+
+**Google Sign-in**
+
+![](screenshots/user_profile_MapView.png)
