@@ -23,3 +23,6 @@ _NOTE: This project will be kept up to date with the latest packages and Flutter
 ![](screenshots/user_profile.png)
 
 ![](screenshots/users_view.png)
+
+![](screenshots/profile_view.png)
+
