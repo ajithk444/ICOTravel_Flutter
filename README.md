@@ -24,8 +24,8 @@ _NOTE: This project will be kept up to date with the latest packages and Flutter
 
 ![alt-text-1](screenshots/login.png "title-1") ![alt-text-2](screenshots/signup.png "title-2")
 
-![alt-text-1](screenshots/home_1.png "title-1") ![alt-text-2](screenshots/user_profile_1.png "title-2")
+![alt-text-1](screenshots/home_1.png "title-1") ![alt-text-2](screenshots/profile_view_1.png "title-2")
 
-![alt-text-1](screenshots/users_view_1.png "title-1") ![alt-text-2](screenshots/profile_view_1.png "title-2")
+![alt-text-1](screenshots/users_view_1.png "title-1") ![alt-text-2](screenshots/permissions.png "title-2")
 
 
