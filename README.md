@@ -10,14 +10,16 @@ This project shows how to implement a map view live location tracker  in Flutter
 This project shows how to:
 
 - Firebase sign-in method (Not yet implemented)
+- Update live location stream (Not yet implmented)
 - build a live location map 
 - load data from Firebase and display in list
 - Locate users and vehicle in map view
 - firestore image storage and retrive for profile image
 - bottom sheets
 
+I hope this provides a base to kick start your app using Google maps in Flutter.
 
-Feel free to use this in your own projects. 😉
+Feel free to use this in your own projects. 
 
 _NOTE: This project will be kept up to date with the latest packages and Flutter version._
 
