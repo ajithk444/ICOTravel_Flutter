@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_fire_login/models/user.dart';
 import 'package:flutter_fire_login/ui/liveMapScreen.dart';
+import 'package:flutter_fire_login/ui/loginScreen.dart';
 import 'package:flutter_fire_login/ui/mapScreen.dart';
 
 
@@ -34,6 +35,13 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.supervised_user_circle),
+            onPressed: () => {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => LoginScreen()))
+            },
+          ),
           IconButton(
             icon: Icon(Icons.map),
             onPressed: () => {
