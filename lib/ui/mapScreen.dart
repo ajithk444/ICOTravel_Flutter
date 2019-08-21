@@ -1,7 +1,10 @@
+import 'dart:async';
 import 'dart:math';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_fire_login/models/user.dart';
 import 'package:flutter_fire_login/utils/GpsGeoLocator.dart';
+import 'package:flutter_fire_login/utils/helper.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -21,12 +24,21 @@ class _MapScreenState extends State<MapScreen> {
   bool _loading = false;
   bool _markerView = true;
 
+  Uint8List _markerIcon;
+
   @override
   void initState() {
     super.initState();
     _loading = true;
+    //initMarkerImage(); //creates the custom marker here
     getUserLocation();
-    getMarkers();
+  }
+
+  initMarkerImage() async {
+    var _data = await getBytesFromAsset('assets/car_marker.png', 100);
+    setState(() {
+      this._markerIcon = _data;
+    });
   }
 
   _onMapCreated(GoogleMapController controller) {
@@ -80,12 +92,10 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   getUserLocation() async {
-    //Position position = await GPSGeoLocator.getOneTimeLocation();  //get user current location
     if (widget.user != null) {
       print('got the location');
       setState(() {
         this._center = LatLng(widget.user.latitude, widget.user.longitude);
-        //this._center = LatLng(position.latitude, position.longitude);
         this._loading = false;
       });
       setMarker();
@@ -108,12 +118,11 @@ class _MapScreenState extends State<MapScreen> {
       onTap: () {
         showModalSheet();
       },
-      icon: BitmapDescriptor.defaultMarker,
+      icon: BitmapDescriptor.defaultMarker//BitmapDescriptor.fromBytes(_markerIcon),
     );
     _markers.add(marker);
   }
 
-  getMarkers() async {}
 
   @override
   Widget build(BuildContext context) {
