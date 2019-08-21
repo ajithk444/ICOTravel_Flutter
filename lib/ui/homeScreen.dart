@@ -95,7 +95,12 @@ class _HomeScreenState extends State<HomeScreen> {
             subtitle:
                 Text(record.address), // + '\n' + record.mobile.toString()),
             trailing: Icon(Icons.more_vert),
-            onTap: () => {},
+             onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MapScreen(user: record),
+              ),
+            ),
           ),
 
           // ListTile(
