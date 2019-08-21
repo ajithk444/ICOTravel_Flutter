@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fire_login/ui/homeScreen.dart';
+import 'package:flutter_fire_login/ui/loginScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,9 +11,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.yellow,
+        fontFamily: 'Lobster Two'
       ),
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(title: 'ICOTravel'),
+      home: LoginScreen()// HomeScreen(title: 'ICOTravel'),
     );
   }
 }

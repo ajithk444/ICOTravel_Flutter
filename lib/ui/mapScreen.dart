@@ -1,12 +1,9 @@
-import 'dart:async';
+import 'dart:io';
 import 'dart:math';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_fire_login/models/user.dart';
-import 'package:flutter_fire_login/utils/GpsGeoLocator.dart';
 import 'package:flutter_fire_login/utils/helper.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geolocator/geolocator.dart';
 
 class MapScreen extends StatefulWidget {
   MapScreen({Key key, this.title, this.user}) : super(key: key);
@@ -23,21 +20,31 @@ class _MapScreenState extends State<MapScreen> {
   Set<Marker> _markers;
   bool _loading = false;
   bool _markerView = true;
-
-  Uint8List _markerIcon;
+  BitmapDescriptor _markerIcon;
 
   @override
   void initState() {
     super.initState();
     _loading = true;
-    //initMarkerImage(); //creates the custom marker here
+    initMarkerImage(); //creates the custom marker here
     getUserLocation();
   }
 
   initMarkerImage() async {
-    var _data = await getBytesFromAsset('assets/car_marker.png', 100);
+    var iconTour;
+    var markerIcon;
+
+    bool isIOS = Platform.isIOS ? true : false; // == TargetPlatform.iOS;
+    if (isIOS) {
+      markerIcon = await getBytesFromCanvas(0.7, 'assets/marker.png');
+      iconTour = BitmapDescriptor.fromBytes(markerIcon);
+    } else {
+      markerIcon = await getBytesFromCanvas(1, 'assets/marker.png');
+      iconTour = BitmapDescriptor.fromBytes(markerIcon);
+    }
+
     setState(() {
-      this._markerIcon = _data;
+      _markerIcon = iconTour;
     });
   }
 
@@ -84,9 +91,6 @@ class _MapScreenState extends State<MapScreen> {
                 onTap: () => {},
               ),
             ]),
-
-            // child: Text(widget.user.mobile.toString()),
-            // padding: EdgeInsets.all(40.0),
           );
         });
   }
@@ -118,11 +122,10 @@ class _MapScreenState extends State<MapScreen> {
       onTap: () {
         showModalSheet();
       },
-      icon: BitmapDescriptor.defaultMarker//BitmapDescriptor.fromBytes(_markerIcon),
+      icon: _markerIcon,
     );
     _markers.add(marker);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -148,9 +151,7 @@ class _MapScreenState extends State<MapScreen> {
       ),
       body: _loading == true
           ? Container(
-              child: Center(
-                  child: CircularProgressIndicator() //Text('Loading...'),
-                  ),
+              child: Center(child: CircularProgressIndicator()),
             )
           : GoogleMap(
               onMapCreated: _onMapCreated,
@@ -160,6 +161,7 @@ class _MapScreenState extends State<MapScreen> {
               tiltGesturesEnabled: true,
               rotateGesturesEnabled: true,
               myLocationEnabled: true,
+              myLocationButtonEnabled: false,
               mapType: MapType.normal,
               zoomGesturesEnabled: true,
               markers: _markers,

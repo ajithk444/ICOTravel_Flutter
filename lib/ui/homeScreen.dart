@@ -4,6 +4,7 @@ import 'package:flutter_fire_login/models/user.dart';
 import 'package:flutter_fire_login/ui/liveMapScreen.dart';
 import 'package:flutter_fire_login/ui/mapScreen.dart';
 
+
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key, this.title}) : super(key: key);
 
@@ -15,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   viewUserOnMap(User record) {
     Navigator.push(
         context,
