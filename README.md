@@ -1,5 +1,6 @@
-# flutter_fire_login
+# ICOTravel App
 
+This project is used to track the members of a cab and its location live. It uses firebase for database and file storage.
 
 This project shows how to implement a map view live location tracker  in Flutter, using various Firebase as backend data store.
 
@@ -8,12 +9,12 @@ This project shows how to implement a map view live location tracker  in Flutter
 
 This project shows how to:
 
-- Firebase sign-in method
-- build a live location map
+- Firebase sign-in method (Not yet implemented)
+- build a live location map 
+- load data from Firebase and display in list
 - Locate users and vehicle in map view
 - firestore image storage and retrive for profile image
 - bottom sheets
-
 
 
 Feel free to use this in your own projects. 😉
