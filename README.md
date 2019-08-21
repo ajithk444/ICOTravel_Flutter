@@ -22,6 +22,8 @@ _NOTE: This project will be kept up to date with the latest packages and Flutter
 
 ## Preview
 
+![alt-text-1](screenshots/login.png "title-1") ![alt-text-2](screenshots/signup.png "title-2")
+
 ![](screenshots/login.png)
 
 ![](screenshots/signup.png)
