@@ -4,6 +4,7 @@ This project is used to track the members of a cab and its location live. It use
 
 This project shows how to implement a map view live location tracker  in Flutter, using various Firebase as backend data store.
 
+This was inspired to be implmented like a live tracking like uber in flutter. 
 
 ## Project goals
 
