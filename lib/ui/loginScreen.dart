@@ -21,12 +21,12 @@ class _LoginPage extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ICOTravel'),
+        title: Text(''),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-          color: Colors.grey,
+          color: Colors.white,
           image: DecorationImage(
             colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(0.05), BlendMode.dstATop),
@@ -42,7 +42,7 @@ class _LoginPage extends State<LoginScreen> {
               child: Center(
                 child: Icon(
                   Icons.directions_bus,
-                  color: Colors.yellowAccent,
+                  color: Colors.black,
                   size: 50.0,
                 ),
               ),
@@ -56,7 +56,7 @@ class _LoginPage extends State<LoginScreen> {
                       "EMAIL",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.yellowAccent,
+                        color: Colors.black,
                         fontSize: 15.0,
                       ),
                     ),
@@ -107,7 +107,7 @@ class _LoginPage extends State<LoginScreen> {
                       "PASSWORD",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.yellowAccent,
+                        color: Colors.black,
                         fontSize: 15.0,
                       ),
                     ),
@@ -160,7 +160,7 @@ class _LoginPage extends State<LoginScreen> {
                       "Forgot Password?",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.yellowAccent,
+                        color: Colors.deepOrange,
                         fontSize: 15.0,
                       ),
                       textAlign: TextAlign.end,

@@ -4,6 +4,7 @@ import 'package:flutter_fire_login/models/user.dart';
 import 'package:flutter_fire_login/ui/liveMapScreen.dart';
 import 'package:flutter_fire_login/ui/loginScreen.dart';
 import 'package:flutter_fire_login/ui/mapScreen.dart';
+import 'package:flutter_fire_login/ui/signup.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -18,16 +19,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  viewUserOnMap(User record) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => MapScreen(
-            user: record,
-            title: record.name,
-          ),
-        ));
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +27,13 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.group_add),
+            onPressed: () => {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => SignUpPage()))
+            },
+          ),
           IconButton(
             icon: Icon(Icons.supervised_user_circle),
             onPressed: () => {
@@ -96,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
             subtitle:
                 Text(record.address), // + '\n' + record.mobile.toString()),
             trailing: Icon(Icons.more_vert),
-            onTap: () => viewUserOnMap(record),
+            onTap: () => {},
           ),
 
           // ListTile(
