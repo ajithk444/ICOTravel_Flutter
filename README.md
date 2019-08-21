@@ -22,6 +22,11 @@ _NOTE: This project will be kept up to date with the latest packages and Flutter
 
 ## Preview
 
+![](screenshots/login.png)
+
+![](screenshots/signup.png)
+
+
 ![](screenshots/home_1.png)
 
 ![](screenshots/user_profile_1.png)
