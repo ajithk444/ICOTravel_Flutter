@@ -1,4 +1,4 @@
-# ICOTravel - Vehicl Live Tracking App
+# ICOTravel - Vehicle Live Tracking App
 
 This project is used to track the members of a cab and its location live. It uses firebase for database and file storage.
 
